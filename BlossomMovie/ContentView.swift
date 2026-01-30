@@ -1,0 +1,31 @@
+//
+//  ContentView.swift
+//  BlossomMovie
+//
+//  Created by Дмитрий Чалов on 11.01.2026.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        TabView {
+            Tab(Constants.homeString, systemImage: Constants.HomeIconString) {
+                HomeView()
+            }
+            Tab(Constants.upcomingString, systemImage: Constants.upcomingIconString) {
+                Text(Constants.upcomingString)
+            }
+            Tab(Constants.searchString, systemImage: Constants.searchIconString) {
+                Text(Constants.searchString)
+            }
+            Tab(Constants.downloadString, systemImage: Constants.downloadIconString) {
+                Text(Constants.downloadString)
+            }
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}
