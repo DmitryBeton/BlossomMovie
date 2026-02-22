@@ -18,18 +18,24 @@ struct Constants {
     static let trendingTVString = "Trending TV"
     static let topRatedMovieString = "Top Rated Movies"
     static let topRatedTVString = "Top Rated TV"
-    
-    static let HomeIconString = "house"
+    static let movieSearchString = "Movie Search"
+    static let tvSearchString = "TV Search"
+    static let moviePlaceHolderString = "Search for a Movie"
+    static let tvPlaceHolderString = "Search for a TV Show"
+
+    static let homeIconString = "house"
     static let upcomingIconString = "play.circle"
     static let searchIconString = "magnifyingglass"
     static let downloadIconString = "arrow.down.to.line"
-    
-    static let testTitleURL = "https://www.themoviedb.org/t/p/w600_and_h900_face/dpM7UpTlRe3mgDF4lLkIdTYd0gs.jpg"
-    static let testTitleURL2 = "https://www.themoviedb.org/t/p/w600_and_h900_face/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
-    static let testTitleURL3 = "https://www.themoviedb.org/t/p/w600_and_h900_face/q5pXRYTycaeW6dEgsCrd4mYPmxM.jpg"
-    
-    static let posterURLStart = "https://www.themoviedb.org/t/p/w600_and_h900_face"
-    
+    static let tvIconString = "tv"
+    static let movieIconString = "movieclapper"
+
+    static let testTitleURL = "https://image.tmdb.org/t/p/w500/nnl6OWkyPpuMm595hmAxNW3rZFn.jpg"
+    static let testTitleURL2 = "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg"
+    static let testTitleURL3 = "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+
+    static let posterURLStart = "https://image.tmdb.org/t/p/w500"
+
     static func addPosterPath(to titles: inout[Title]) {
         for index in titles.indices {
             if let path = titles[index].posterPath {
@@ -39,15 +45,32 @@ struct Constants {
     }
 }
 
+enum YoutubeURLStrings: String {
+    case trailer = "trailer"
+    case queryShorten = "q"
+    case space = " "
+    case key = "key"
+}
+
 extension Text {
     func ghostButton() -> some View {
         self
             .frame(width: 100, height: 50)
-            .foregroundColor(.buttonText)
+            .foregroundStyle(.buttonText)
             .bold()
             .background {
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .stroke(.buttonBorder, lineWidth: 5)
+                    .stroke(.buttonBorder,lineWidth: 5)
             }
+    }
+}
+
+extension Text {
+    func errorMessage() -> some View {
+        self
+            .foregroundStyle(.red)
+            .padding()
+            .background(.ultraThinMaterial)
+            .clipShape(.rect(cornerRadius: 10))
     }
 }

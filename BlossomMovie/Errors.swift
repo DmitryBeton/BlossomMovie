@@ -11,7 +11,7 @@ enum APIConfigError: Error, LocalizedError {
     case fileNotFound
     case dataLoadingFailed(underlyingError: Error)
     case decodingFailed(underlyingError: Error)
-    
+
     var errorDescription: String? {
         switch self {
         case .fileNotFound:
@@ -28,15 +28,15 @@ enum NetworkError: Error, LocalizedError {
     case badURLResponse(underlyingError: Error)
     case missingConfig
     case urlBuildFailed
-    
+
     var errorDescription: String? {
         switch self {
         case .badURLResponse(underlyingError: let error):
-            "Failed to parse URL response: \(error.localizedDescription)."
+            return "Failed to parse URL response: \(error.localizedDescription)."
         case .missingConfig:
-            "Missing API configuration."
+            return "Missing API configuration."
         case .urlBuildFailed:
-            "Failed to build URL."
+            return "Failed to build URL."
         }
     }
 }
